@@ -22,3 +22,4 @@ urlpatterns = [
     path('home/', include('Apps.Home.urls'), name='home'),
     path('principal/', include('Apps.Principal.urls'), name='principal'),
 ]
+

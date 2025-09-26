@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block contenido %}
+<div class="row">
+    <div class="col-md-12 text-start">
+        <h1 class="mb-4">Eliminar Usuario</h1>
+    
+        <div class="card border-danger" style="background-color: rgba(220,53,69,0.1);">
+            <div class="card-header bg-danger text-white">
+                <h5><i class="bi bi-exclamation-triangle"></i> Confirmación de Eliminación</h5>
+            </div>
+            <div class="card-body">
+                <p class="lead">¿Está seguro de que desea eliminar el siguiente usuario?</p>
+                
+                <div class="card mb-3" style="background-color: rgba(255,255,255,0.1);">
+                    <div class="card-body">
+                        <h6 class="card-title">{{ usuario.nombre }}</h6>
+                        <p class="card-text">
+                            <strong>Email:</strong> {{ usuario.email }}<br>
+                            <strong>Teléfono:</strong> {{ usuario.telefono }}<br>
+                            <strong>Registrado:</strong> {{ usuario.fecha_registro|date:"d/m/Y H:i" }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning">
+                    <i class="bi bi-info-circle"></i>
+                    <strong>Advertencia:</strong> Esta acción no se puede deshacer. Todos los datos del usuario serán eliminados permanentemente.
+                </div>
+
+                <form method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger me-2">
+                        <i class="bi bi-trash"></i> Sí, Eliminar Usuario
+                    </button>
+                </form>
+                <a href="{% url 'Principal:usuariosapp' %}" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> No, Cancelar
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+{% endblock contenido %}
